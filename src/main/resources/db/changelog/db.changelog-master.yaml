@@ -1,0 +1,95 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: zzaharovs
+      changes:
+        - createTable:
+            tableName: customers
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: surname
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: age
+                  type: integer
+              - column:
+                  name: phone_number
+                  type: varchar(50)
+  - changeSet:
+      id: 2
+      author: zzaharovs
+      changes:
+        - createTable:
+            tableName: orders
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: date
+                  type: date
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: customer_id
+                  type: integer
+              - column:
+                  name: product_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 3
+      author: zzaharovs
+      changes:
+        - insert:
+            tableName: customers
+            columns:
+              - column:
+                  name: name
+                  value: Alexey
+              - column:
+                  name: surname
+                  value: Политика
+              - column:
+                  name: age
+                  value: 21
+              - column:
+                  name: phone_number
+                  value: 444-555
+        - insert:
+            tableName: orders
+            columns:
+              - column:
+                  name: customer_id
+                  value: 1
+              - column:
+                  name: product_name
+                  value: books
+              - column:
+                  name: amount
+                  value: 14000
