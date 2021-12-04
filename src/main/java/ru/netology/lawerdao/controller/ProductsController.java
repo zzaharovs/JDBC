@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.netology.lawerdao.repo.ProductsRepo;
+import ru.netology.lawerdao.service.ProductsService;
 
 import java.util.List;
 
@@ -16,12 +17,12 @@ import java.util.List;
 @Validated
 public class ProductsController {
 
-    private final ProductsRepo productsRepo;
+    private final ProductsService productsService;
 
     @GetMapping("/fetch-product")
-    public String getProducts(String managerName) {
+    public List <String> getProducts(String managerName) {
 
-        return productsRepo.getProductName(managerName);
+        return productsService.getProductNameByCustomerName(managerName);
     }
 
 }
